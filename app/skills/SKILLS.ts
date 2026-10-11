@@ -16,7 +16,7 @@ export let SKILLS: Skill[] = [
     createdAt: "2022-03-02",
     updatedAt: "2022-03-02",
   },
-   {
+  {
     id: "2",
     name: "skill 2",
     description: "Description 2",
@@ -26,16 +26,17 @@ export let SKILLS: Skill[] = [
   },
 ];
 
-
-
-export async function getskills(){
-  return [...SKILLS]
+export async function getskills() {
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(null);
+    }, 3000);
+  });
+  return [...SKILLS];
 }
 
-
-
-export async function addSkill(skill:Skill){
-  await new Promise((resolve) => setTimeout(resolve, 3000))
+export async function addSkill(skill: Skill) {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   SKILLS = [...SKILLS, skill];
-  console.log("Skill", SKILLS)
+  console.log("Skill", SKILLS);
 }

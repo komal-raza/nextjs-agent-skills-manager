@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { getskills } from "../SKILLS";
+import { notFound } from "next/navigation";
 
 type SkillPageProps = {
     params: Promise<{
@@ -7,18 +8,34 @@ type SkillPageProps = {
     }>
 }
 
+const SkillDetailCard = ({ skill }) => {
+    return (
+        <div className=" flex justify-center items-center">
+            <div className="card card-border bg-base-100 w-96">
+                <div className="card-body">
+                    <h2 className="card-title">{skill?.name?.toUpperCase()}</h2>
+                    <article className="max-w-md mx-auto p-4 flex flex-col gap-4">
+                        <p>{skill?.description}</p>
+                        <p> Category: {skill?.category}</p>
+                        <p>Created At: {skill?.createdAt}</p>
+                        <p>Update At: {skill?.updatedAt}</p>
+                    </article>
+                </div>
+            </div>
+        </div>)
+}
+
 
 async function SkillDetails({ params }: SkillPageProps) {
     const { identifier } = await params;
- const skills = await getskills();
-    const skill = skills.find((skill) => skill.id===identifier);
-    return skill? <article>
-        <h1>{skill?.name}</h1>
-        <p>{skill?.description}</p>
-        <p>{skill?.category}</p>
-        <p>{skill?.createdAt}</p>
-        <p>{skill?.updatedAt}</p>
-    </article>: <p>No Skill Found</p>
+    const skills = await getskills();
+    const skill = skills.find((skill) => skill.id === identifier);
+
+    if (!skill) {
+        return notFound();
+    }
+
+    return <SkillDetailCard skill={skill} />
 }
 
 export default async function SkillDetailPage({
@@ -27,9 +44,9 @@ export default async function SkillDetailPage({
 
 
     return (
-        <Suspense fallback={<p>Loading Skill Details ....</p>}>
-            <SkillDetails params={params} />
-        </Suspense>
+        // <Suspense fallback={<p>Loading Skill Details ....</p>}>
+        <SkillDetails params={params} />
+        // </Suspense>
     )
 }
 

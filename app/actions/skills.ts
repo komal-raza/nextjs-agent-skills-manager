@@ -13,6 +13,7 @@ export async function createSkill(prevState:any, formData:FormData){
 
 
     if(!name || !description || !category){
+        throw new Error('External API not available')
         return {
             message:"Please fill in all fields"
         }
