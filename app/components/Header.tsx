@@ -1,6 +1,10 @@
+'use client';
+import { useAuth } from "@/hooks/useAuth"
 import Link from "next/link"
 
 export const Header = () => {
+
+    const { isAuthenticated, user, logout, isLoading } = useAuth();
     return (
         <div className="max-lg:collapse bg-base-200 lg:mb-48 shadow-sm w-full rounded-md">
             <input id="navbar-1-toggle" className="peer hidden" type="checkbox" />
@@ -17,11 +21,57 @@ export const Header = () => {
                         <li><Link href="/skills">Skills</Link></li>
 
                         <li><Link href="/about">About</Link></li>
+                        {isAuthenticated && <li><Link href="/dashboard">Dashboard</Link></li>}
+
                     </ul>
                 </div>
+                {/* <div className="navbar-end">
+                    {isAuthenticated ?
+                     <button className="btn btn-primary" onClick={logout}>Logout</button> : <Link href="/login" className="btn">Login</Link>}
+                </div> */}
+
                 <div className="navbar-end">
-                    <Link href="/login" className="btn">Login</Link>
-                    
+                    {isLoading ? (
+                        <span className="loading loading-spinner loading-sm"></span>
+                    ) : isAuthenticated ? (
+                        <div className="dropdown dropdown-end">
+                            <div
+                                tabIndex={0}
+                                role="button"
+                                className="btn btn-ghost btn-circle avatar placeholder"
+                            >
+                                <div className="bg-primary text-primary-content w-10 rounded-full flex items-center justify-center">
+                                    <span className="text-lg">
+                                        {user?.name?.charAt(0).toUpperCase()}
+                                    </span>
+                                </div>
+                            </div>
+                            <ul
+                                tabIndex={0}
+                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                            >
+                                <li className="menu-title">{user?.name}</li>
+                                <li>
+                                    <Link href="/dashboard">Dashboard</Link>
+                                </li>
+                                <li>
+                                    <Link href="/dashboard/skills/new">Create Skill</Link>
+                                </li>
+                                <li>
+                                    <button onClick={logout}>Logout</button>
+                                </li>
+                            </ul>
+                        </div>
+                    ) : (
+                        <div className="flex gap-2">
+                            <Link href="/login" className="btn btn-ghost btn-sm">
+                                Login
+                            </Link>
+                            <Link href="/register" className="btn btn-primary btn-sm">
+                                Sign Up
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -29,6 +79,8 @@ export const Header = () => {
                 <ul className="menu">
                     <li><Link href="/skills">Skills</Link></li>
                     <li><Link href="/about">About</Link></li>
+                    {isAuthenticated && <li><Link href="/dashboard">Dashboard</Link></li>}
+
                 </ul>
             </div>
         </div>
