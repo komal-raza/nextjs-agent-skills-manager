@@ -24,10 +24,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const validatePassword = verifyPassword(password, user?.password);
+    const validatePassword = await verifyPassword(password, user.password);
 
     if (!validatePassword) {
-      NextResponse.json({ error: "Invalid password" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid password" }, { status: 401 });
     }
     const token = generateToken({
       id: user.id,

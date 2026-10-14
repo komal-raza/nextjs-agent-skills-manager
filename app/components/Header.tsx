@@ -42,20 +42,20 @@ export const Header = () => {
                             >
                                 <div className="bg-primary text-primary-content w-10 rounded-full flex items-center justify-center">
                                     <span className="text-lg">
-                                        {user?.name?.charAt(0).toUpperCase()}
+                                        {user?.name?.charAt(0)?.toUpperCase() || "U"}
                                     </span>
                                 </div>
                             </div>
                             <ul
                                 tabIndex={0}
-                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
                             >
                                 <li className="menu-title">{user?.name}</li>
                                 <li>
                                     <Link href="/dashboard">Dashboard</Link>
                                 </li>
                                 <li>
-                                    <Link href="/dashboard/skills/new">Create Skill</Link>
+                                    <Link href="/skills/create">Create Skill</Link>
                                 </li>
                                 <li>
                                     <button onClick={logout}>Logout</button>
