@@ -57,7 +57,7 @@ export default async function SkillsPage() {
                 </div>
             ) : (
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {skills.map((skill) => (
+                    {skills.map((skill: (typeof skills)[number]) => (
                         <Link
                             key={skill.id}
                             href={`/skills/${skill.id}`}
