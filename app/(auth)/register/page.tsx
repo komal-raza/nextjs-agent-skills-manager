@@ -3,7 +3,7 @@
 import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -16,10 +16,16 @@ export default function RegisterPage() {
     const [name, setName] = useState("")
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const hasRedirected = useRef(false);
 
+    useEffect(() => {
+        if (!isLoading && isAuthenticated && !hasRedirected.current) {
+            hasRedirected.current = true;
+            router.push("/dashboard");
+        }
+    }, [isLoading, isAuthenticated, router]);
 
     if (!isLoading && isAuthenticated) {
-        router.push("/dashboard");
         return null;
     }
 

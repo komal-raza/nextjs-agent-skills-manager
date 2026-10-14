@@ -4,7 +4,7 @@ import { deleteSkill } from "@/actions/skills";
 import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Skill {
     id: number;
@@ -23,10 +23,11 @@ export default function DashboardPage() {
     const [skills, setSkills] = useState<Skill[]>([]);
     const [loadingSkill, setLoadingSkill] = useState(true);
     const [deletingId, setDeletingId] = useState<number | null>(null);
-
+    const hasRedirected = useRef(false);
 
     useEffect(() => {
-        if (!isLoading && !isAuthenticated) {
+        if (!isLoading && !isAuthenticated && !hasRedirected.current) {
+            hasRedirected.current = true;
             router.push("/login");
         }
     }, [isLoading, isAuthenticated, router]);

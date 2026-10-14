@@ -6,6 +6,7 @@ import {
   useState,
   useEffect,
   useCallback,
+  useMemo,
   ReactNode,
 } from "react";
 import { useRouter } from "next/navigation";
@@ -160,13 +161,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     router.push("/login");
   }, [router]);
 
-  const value: AuthContextType = {
-    ...authState,
-    login,
-    register,
-    logout,
-    checkAuth,
-  };
+  const value = useMemo<AuthContextType>(
+    () => ({
+      ...authState,
+      login,
+      register,
+      logout,
+      checkAuth,
+    }),
+    [authState, login, register, logout, checkAuth]
+  );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

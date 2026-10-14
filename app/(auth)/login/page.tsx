@@ -2,7 +2,7 @@
 import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function LoginPage() {
 
@@ -15,9 +15,11 @@ export default function LoginPage() {
 
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const hasRedirected = useRef(false);
 
     useEffect(() => {
-        if (!isLoading && isAuthenticated) {
+        if (!isLoading && isAuthenticated && !hasRedirected.current) {
+            hasRedirected.current = true;
             router.replace("/dashboard");
         }
     }, [isLoading, isAuthenticated, router]);
@@ -27,9 +29,9 @@ export default function LoginPage() {
         setError("");
         setIsSubmitting(true);
 
-
         try {
             await login({ email, password });
+            router.replace("/dashboard");
         } catch (error) {
             setError(error instanceof Error ? error.message : "Login failed");
         } finally {
