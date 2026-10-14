@@ -131,7 +131,7 @@ export default function RegisterPage() {
                 <div className="form-control mt-6">
                     <button type="submit" className="btn btn-primary w-full" disabled={isSubmitting}>{isSubmitting ? (
                         <span className="loading loading-spinner loading-sm"></span>
-                    ) : ("Sign in")}</button>
+                    ) : ("Sign up")}</button>
                 </div>
 
 

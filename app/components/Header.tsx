@@ -18,9 +18,7 @@ export const Header = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><Link href="/skills">Skills</Link></li>
-
-                        <li><Link href="/about">About</Link></li>
+                        <li><Link href="/skills">Published Skills</Link></li>
                         {isAuthenticated && <li><Link href="/dashboard">Dashboard</Link></li>}
 
                     </ul>
@@ -78,7 +76,6 @@ export const Header = () => {
             <div className="collapse-content lg:hidden z-1">
                 <ul className="menu">
                     <li><Link href="/skills">Skills</Link></li>
-                    <li><Link href="/about">About</Link></li>
                     {isAuthenticated && <li><Link href="/dashboard">Dashboard</Link></li>}
 
                 </ul>
