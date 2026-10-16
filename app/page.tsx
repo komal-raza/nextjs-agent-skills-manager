@@ -289,92 +289,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. SPECIFICATION VS. AD-HOC PROMPTING */}
-      <section className="border-b border-[#362E28] bg-[#120F0D] py-16 sm:py-20">
-        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <h2 className="text-2xl font-bold tracking-tight text-[#FBF8F4] sm:text-3xl">
-              Why structured skills outlast chat prompts.
-            </h2>
-            <p className="mt-3 text-base text-[#A89E96]">
-              Production AI agent systems require version control, documented
-              invariants, and portable execution rules—not transient chat paste-ins.
-            </p>
-          </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {/* Ad-Hoc Prompts */}
-            <div className="rounded-xl border border-rose-950/40 bg-[#161111] p-6 sm:p-8">
-              <div className="inline-block rounded-md bg-rose-500/10 border border-rose-500/20 px-2.5 py-1 font-mono text-xs font-semibold text-rose-300">
-                Traditional Approach
-              </div>
-              <h3 className="mt-4 text-lg font-bold text-[#FBF8F4]">
-                Ad-Hoc Prompt Snippets
-              </h3>
-              <p className="mt-2 text-sm text-[#A89E96] leading-relaxed">
-                Instructions scattered across Slack channels, local scratch files,
-                and browser history.
-              </p>
-
-              <ul className="mt-6 space-y-3 text-sm text-[#EDE8E1]">
-                <li className="flex items-start gap-2.5">
-                  <span className="text-rose-400 font-bold">✕</span>
-                  <span>Zero version control or changelog tracking.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-rose-400 font-bold">✕</span>
-                  <span>
-                    No validation: models hallucinate non-existent tools and APIs.
-                  </span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-rose-400 font-bold">✕</span>
-                  <span>
-                    Inconsistent execution across team members and different runs.
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Agentic Skills */}
-            <div className="rounded-xl border border-amber-500/35 bg-[#171412] p-6 sm:p-8 shadow-sm">
-              <div className="inline-block rounded-md bg-amber-500/15 border border-amber-500/30 px-2.5 py-1 font-mono text-xs font-semibold text-amber-300">
-                Agentic Skills Hub
-              </div>
-              <h3 className="mt-4 text-lg font-bold text-[#FBF8F4]">
-                Standardized SKILL.md Manifests
-              </h3>
-              <p className="mt-2 text-sm text-[#A89E96] leading-relaxed">
-                Deterministic Markdown units with typed frontmatter, trigger
-                criteria, and strict execution bounds.
-              </p>
-
-              <ul className="mt-6 space-y-3 text-sm text-[#FBF8F4]">
-                <li className="flex items-start gap-2.5">
-                  <CheckIcon />
-                  <span>
-                    Committed alongside source code or shared in a centralized registry.
-                  </span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <CheckIcon />
-                  <span>
-                    Strict execution boundaries with verified negative constraints.
-                  </span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <CheckIcon />
-                  <span>
-                    Portable across Claude Code, Antigravity, and OpenAI agents.
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. CURATED ARCHETYPES DIRECTORY */}
+         {/* 3. CURATED ARCHETYPES DIRECTORY */}
       <section className="border-b border-[#362E28] bg-[#0D0B0A] py-16 sm:py-24">
         <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -438,6 +354,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
 
       {/* 4. VISIBILITY & REPOSITORY ARCHITECTURE */}
       <section className="border-b border-[#362E28] bg-[#120F0D] py-16 sm:py-20">

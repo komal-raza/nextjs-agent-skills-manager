@@ -8,79 +8,86 @@ export const Header = () => {
     return (
         <header className="sticky top-0 z-40 w-full bg-base-200/90 backdrop-blur-md border-b border-[#2A2420]">
             <div className="max-lg:collapse w-full">
-            <input id="navbar-1-toggle" className="peer hidden" type="checkbox" />
-            <label htmlFor="navbar-1-toggle" className="fixed inset-0 hidden max-lg:peer-checked:block"></label>
-            <div className="collapse-title navbar px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-                <div className="navbar-start">
-                    <label htmlFor="navbar-1-toggle" className="btn btn-ghost lg:hidden">
-                        <svg aria-label="Menu" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                    </label>
-                    <Link href="/" className="btn btn-ghost text-xl">Agentic Skills</Link>
-                </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                        <li><Link href="/skills">Published Skills</Link></li>
-                        {isAuthenticated && <li><Link href="/dashboard">Dashboard</Link></li>}
+                <input id="navbar-1-toggle" className="peer hidden" type="checkbox" />
+                <label htmlFor="navbar-1-toggle" className="fixed inset-0 hidden max-lg:peer-checked:block"></label>
+                <div className="collapse-title navbar px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                    <div className="navbar-start">
+                        <label htmlFor="navbar-1-toggle" className="btn btn-ghost lg:hidden">
+                            <svg aria-label="Menu" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        </label>
+                        <Link href="/" className="flex items-center gap-2.5">
+                            <span className="flex h-7 w-7 items-center justify-center rounded-md bg-amber-400 text-xs font-mono font-bold text-stone-950 shadow-[0_0_12px_rgba(245,158,11,0.3)]">
+                                SK
+                            </span>
+                            <span className="text-sm font-semibold tracking-tight text-[#FBF8F4]">
+                                Agentic Skills
+                            </span>
+                        </Link>
+                    </div>
+                    <div className="navbar-center hidden lg:flex">
+                        <ul className="menu menu-horizontal px-1">
+                            <li><Link href="/skills">Published Skills</Link></li>
+                            {isAuthenticated && <li><Link href="/dashboard">Dashboard</Link></li>}
 
-                    </ul>
-                </div>
-                {/* <div className="navbar-end">
+                        </ul>
+                    </div>
+                    {/* <div className="navbar-end">
                     {isAuthenticated ?
                      <button className="btn btn-primary" onClick={logout}>Logout</button> : <Link href="/login" className="btn">Login</Link>}
                 </div> */}
 
-                <div className="navbar-end">
-                    {isLoading ? (
-                        <span className="loading loading-spinner loading-sm"></span>
-                    ) : isAuthenticated ? (
-                        <div className="dropdown dropdown-end">
-                            <div
-                                tabIndex={0}
-                                role="button"
-                                className="btn btn-ghost btn-circle avatar placeholder"
-                            >
-                                <div className="bg-primary text-primary-content w-10 rounded-full flex items-center justify-center">
-                                    <span className="text-lg">
-                                        {user?.name?.charAt(0)?.toUpperCase() || "U"}
-                                    </span>
+                    <div className="navbar-end">
+                        {isLoading ? (
+                            <span className="loading loading-spinner loading-sm"></span>
+                        ) : isAuthenticated ? (
+                            <div className="dropdown dropdown-end">
+                                <div
+                                    tabIndex={0}
+                                    role="button"
+                                    className="btn btn-ghost btn-circle avatar placeholder"
+                                >
+                                    <div className="bg-primary text-primary-content w-10 rounded-full flex items-center justify-center">
+                                        <span className="text-lg">
+                                            {user?.name?.charAt(0)?.toUpperCase() || "U"}
+                                        </span>
+                                    </div>
                                 </div>
+                                <ul
+                                    tabIndex={0}
+                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                                >
+                                    <li className="menu-title">{user?.name}</li>
+                                    <li>
+                                        <Link href="/dashboard">Dashboard</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/skills/create">Create Skill</Link>
+                                    </li>
+                                    <li>
+                                        <button onClick={logout}>Logout</button>
+                                    </li>
+                                </ul>
                             </div>
-                            <ul
-                                tabIndex={0}
-                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-                            >
-                                <li className="menu-title">{user?.name}</li>
-                                <li>
-                                    <Link href="/dashboard">Dashboard</Link>
-                                </li>
-                                <li>
-                                    <Link href="/skills/create">Create Skill</Link>
-                                </li>
-                                <li>
-                                    <button onClick={logout}>Logout</button>
-                                </li>
-                            </ul>
-                        </div>
-                    ) : (
-                        <div className="flex gap-2">
-                            <Link href="/login" className="btn btn-ghost btn-sm">
-                                Login
-                            </Link>
-                            <Link href="/register" className="btn btn-primary btn-sm">
-                                Sign Up
-                            </Link>
-                        </div>
-                    )}
+                        ) : (
+                            <div className="flex gap-2">
+                                <Link href="/login" className="btn btn-ghost btn-sm">
+                                    Login
+                                </Link>
+                                <Link href="/register" className="btn btn-primary btn-sm">
+                                    Sign Up
+                                </Link>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>
 
-            <div className="collapse-content lg:hidden z-1">
-                <ul className="menu">
-                    <li><Link href="/skills">Skills</Link></li>
-                    {isAuthenticated && <li><Link href="/dashboard">Dashboard</Link></li>}
+                <div className="collapse-content lg:hidden z-1">
+                    <ul className="menu">
+                        <li><Link href="/skills">Skills</Link></li>
+                        {isAuthenticated && <li><Link href="/dashboard">Dashboard</Link></li>}
 
-                </ul>
-            </div>
+                    </ul>
+                </div>
             </div>
         </header>
     )
