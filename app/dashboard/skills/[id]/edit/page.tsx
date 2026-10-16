@@ -138,7 +138,7 @@ export default function EditSkillPage({
 
             <div className="card bg-base-200 shadow-xl">
                 <div className="card-body">
-                    <h1 className="card-title text-2xl">Create New Skill</h1>
+                    <h1 className="card-title text-2xl">Edit Skill {name}</h1>
                     <p className="text-base-content/70">
                         Define your agent skill using markdown format
                     </p>
