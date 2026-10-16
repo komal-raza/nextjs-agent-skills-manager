@@ -1,10 +1,35 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* DaisyUI configuration via CSS */
 :root {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+/* Warm Sepia Noir & Solar Amber Theme */
+[data-theme="dark"] {
+  --color-base-100: #0D0B0A;
+  --color-base-200: #171412;
+  --color-base-300: #221C18;
+  --color-base-content: #FBF8F4;
+  --color-primary: #F59E0B;
+  --color-primary-content: #0D0B0A;
+  --color-secondary: #D97706;
+  --color-secondary-content: #0D0B0A;
+  --color-accent: #FBBF24;
+  --color-accent-content: #0D0B0A;
+  --color-neutral: #2A2420;
+  --color-neutral-content: #FBF8F4;
+  --color-info: #38BDF8;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+}
+
+/* Selection and browser surfaces (Impeccable craft floor) */
+::selection {
+  background-color: rgba(245, 158, 11, 0.25);
+  color: #FDE68A;
 }
 
 /* Custom utilities */
